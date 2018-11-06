@@ -15,7 +15,7 @@ const display = (request, response) => {
 const getUsers = (request, response) => {
   console.log(process.env.POSTGRES_USER);
   console.log(pool);
-  pool.query("SELECT * FROM users ORDER BY id ASC", (error, results) => {
+  pool.query("SELECT * FROM users ORDER BY userId ASC", (error, results) => {
     if (error) {
       throw error;
     }
