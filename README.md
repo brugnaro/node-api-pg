@@ -33,7 +33,7 @@ psql postgres
 ```sql
 CREATE ROLE green_it WITH LOGIN PASSWORD 'p@ssword';
 ALTER ROLE green_it CREATEDB;
-CREATE DATABASE greenit;
+CREATE DATABASE green_it;
 GRANT ALL PRIVILEGES ON DATABASE green_it TO green_it;
 ```
 
