@@ -1,10 +1,11 @@
+require("dotenv").config();
 const Pool = require("pg").Pool;
 const pool = new Pool({
   user: process.env.POSTGRES_USER,
-  host: process.env.POSTGRES_DB,
+  host: process.env.POSTGRES_HOST,
   database: process.env.POSTGRES_DB,
   password: process.env.POSTGRES_PASSWORD,
-  port: 5432
+  port: process.env.POSTGRES_PORT
 });
 
 const display = (request, response) => {
@@ -12,6 +13,8 @@ const display = (request, response) => {
 };
 
 const getUsers = (request, response) => {
+  console.log(process.env.POSTGRES_USER);
+  console.log(pool);
   pool.query("SELECT * FROM users ORDER BY id ASC", (error, results) => {
     if (error) {
       throw error;

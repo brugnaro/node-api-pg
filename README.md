@@ -31,16 +31,16 @@ psql postgres
 ## Database
 
 ```sql
-CREATE ROLE patrick WITH LOGIN PASSWORD 'password';
-ALTER ROLE patrick CREATEDB;
+CREATE ROLE green_it WITH LOGIN PASSWORD 'p@ssword';
+ALTER ROLE green_it CREATEDB;
 CREATE DATABASE greenit;
-GRANT ALL PRIVILEGES ON DATABASE greenit TO patrick;
+GRANT ALL PRIVILEGES ON DATABASE green_it TO green_it;
 ```
 
 - #### Connection
 
 ```bash
-psql -d greenit -U patrick
+psql -d greenit -U green_it
 ```
 
 - #### Create table
@@ -56,7 +56,7 @@ CREATE TABLE users (
     created_at date NOT NULL DEFAULT NOW(),
     roleId int NOT NULL,
     PRIMARY KEY (userId),
-    FOREIGN KEY (userId) REFERENCES roles(userId)
+    FOREIGN KEY (roleId) REFERENCES roles(roleId)
 );
 
 CREATE TABLE roles (
@@ -67,9 +67,6 @@ CREATE TABLE roles (
 
 CREATE INDEX "idx_users_email"
 ON users ("email");
-
-INSERT INTO users (name, email)
-  VALUES ('Johnny', 'Bravo', 'johnny-bravo@contact.me'), ('George Bush', 'george-bush@gov.us');
 ```
 
 ## Launch the app
